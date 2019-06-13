@@ -1,0 +1,64 @@
+{# Will extend the header and footer #} {% extends "core/base.html" %} {# Title of our page #}
+{% block title %}Support | Verifone{% endblock %}
+{# Links our CSS #}
+{% block styles %} {% load staticfiles %}
+    <link href="{% static 'core/index.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css"> {% endblock %}
+{# All HTML content should go here #}
+{% block content %}
+    {#All HTML content should go here#}
+    <div class="jumbotron">
+        <div class="home-header">
+            <div class="container">
+                <h1>How can we help you?</h1>
+                <form method="get" action="{% url 'forum:search' %}">
+                    <input class="searchEngine" type="text" placeholder="Search questions..." name="q">
+                    <input class="btn-primary" type="submit" placeholder="Search">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container home-container">
+        <div class="grid">
+            <div class="item options">
+                <i class="material-icons">search</i>
+                <h2>Search a question</h2>
+                <p>Know what you're looking for? Just search up!</p>
+            </div>
+            <div class="item options">
+                <i class="material-icons">group</i>
+                <h2>Chat with the community</h2>
+                <p>Community experts on call to help you with all your problems!</p>
+            </div>
+            <div class="item options">
+                <i class="material-icons">adb</i>
+                <h2>Chat with the robot</h2>
+                <p>Easy question? Our robot will help you instantly!</p>
+            </div>
+        </div>
+        <div class="question-container">
+            <div class="grid">
+                <div class="item">
+                    <h2>Popular Questions</h2>
+                    <ul>
+                        {% for question in popular_questions %}
+                            <li><a href="{% url 'forum:question' question.id %}">{{ question }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="item">
+                    <h2>Latest Questions</h2>
+                    <ul>
+                        {% for question in latest_questions %}
+                            <li><a href="{% url 'forum:question' question.id %}">{{ question }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contactus">
+            <h2>Our number</h2>
+            <h1>1-800-555-1234</h1>
+            <p>Email us</p>
+        </div>
+    </div>
+{% endblock %} {#All HTML content should end here#}

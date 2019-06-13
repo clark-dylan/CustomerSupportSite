@@ -1,0 +1,337 @@
+/*****************************************/
+/*Header CSS*/
+/****************************************/
+header {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header_container {
+    width: 1350px;
+    margin: 0 auto;
+}
+
+.nav_menu {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.nav_text {
+    margin-right: 20px;
+}
+
+
+.nav_text a {
+    color: black;
+    padding: 20px 10px;
+    transition: 0.2s;
+}
+
+.nav_text a:hover {
+    color: white;
+    background-color: #00AEEF;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.header_logo {
+    margin: 0 auto;
+    width: 220px;
+    height: 70px;
+    background: url("verifone-header-logo.svg") no-repeat;
+    background-size: 220px 60px;
+}
+
+.header_search i {
+    vertical-align: middle;
+    margin-left: 10px;
+    color: #008bef;
+}
+
+.header_search input {
+    vertical-align: middle;
+    display: inline-block;
+    width: 400px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+/*****************************************/
+/*Footer CSS*/
+/****************************************/
+
+.footer_jumbotron {
+    width: 100%;
+    background-color: #333333;
+    padding: 35px 0 50px 0;
+    flex-shrink: 0;
+}
+
+.footer_logo {
+    width: 220px;
+    margin-bottom: 30px;
+}
+
+.footer_container {
+    width: 1350px;
+    color: white;
+    margin: 0 auto;
+}
+
+.footer_grid {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.footer_grid h2{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.footer_grid a {
+    display: block !important;
+    text-decoration: none;
+    color: white;
+}
+
+.footer_grid a:hover{
+    color: #00AEEF;
+}
+/*****************************************/
+/*Patterns CSS*/
+/****************************************/
+
+/*Class that will take 100% of page. Use this for large images, text, etc.*/
+.jumbotron {
+    width: 100%;
+    flex: 1 0 auto;
+}
+
+/*Class that will take 1350px of page. This is the main container*/
+.container {
+    width: 1350px;
+    margin: 0 auto;
+}
+
+/*A grid is a container that contains same-width columns (items). If you were to create
+a grid with 3 columns (items), then each column would be 33.333%*/
+.grid {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+/*Each item is one column*/
+.item {
+    width: 50%;
+    margin: 20px;
+}
+
+/*Create default Verifone buttons*/
+.btn-primary {
+    display: inline-block;
+    background-color: #00AEEF;
+    color: white;
+    padding: 15px;
+}
+
+/*add this class with btn-primary or input[type=submit] to make buttons 100% width*/
+.btn-block {
+    width: 100%;
+}
+
+.pagination-container {
+    margin: 30px 0;
+}
+
+.start-topic-btn {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #008cef;
+    transition: 0.3s;
+}
+
+.pagination {
+    float: right;
+    clear: both;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    background-color: white;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #f1f1f1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.pagination a.active {
+    color: white;
+    background-color: #00AEEF;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+/*Patterns to display questions (Use forum html as guide)*/
+.question-container {
+    margin-top: 25px;
+}
+
+.question {
+    display: block;
+    padding: 15px;
+    background-color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+
+.question-details-container {
+    display: inline-block;
+}
+
+.num-replies {
+    float: right;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.question-author {
+    font-size: 12px;
+    color: gray;
+}
+
+.question-author a {
+    font-size: inherit;
+}
+
+/*Spans 100% of container to create a header with a name inside it*/
+.nameHeader {
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding: 55px;
+}
+
+.nameHeader h1 {
+    font-size: 50px;
+}
+
+/*****************************************/
+/*Global settings Do not change*/
+/****************************************/
+
+/*Remove default body spacing*/
+body, html {
+    margin: 0;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/*Makes it so padding doesn't affect size*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', Arial, sans-serif;
+    margin: 0;
+}
+
+/*Consistent link decoration*/
+a {
+    color: #00AEEF;
+    text-decoration: none;
+}
+
+/*Link on focus and hover*/
+a:focus, a:hover {
+    color: #23527c;
+    text-decoration: underline;
+}
+
+/*Input styling*/
+input {
+    display: block;
+    padding: 10px;
+    border: 0;
+}
+
+/*Submit input buttons will always be clickable */
+input[type="submit"] {
+    background-color: #00AEEF;
+    cursor: pointer;
+}
+
+/*Headers should have branded font family*/
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 19px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 13px;
+}
+
+/*Consistent paragraph tag*/
+p, li {
+    font-family: 'Noto Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    margin: 0 0 10px;
+}
+
+/*Add margins for lists*/
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,61 @@
+body {
+    position: relative;
+}
+
+#bot_icon{
+    display: block;
+    width: 50px;
+    margin: 10px auto;
+}
+
+.chat_log {
+    width: 90%;
+    height: 70vh;
+    border-top: 2px solid lightgray;
+    margin: 0 auto;
+    margin-top: 2%;
+    overflow-y: auto;
+}
+
+.input_log {
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.input_log input {
+    display: inline-block;
+    width: 80%;
+    padding: 15px;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+}
+
+#sub_button {
+    display: inline-block;
+    background-color: #00AEEF;
+    color: white;
+    padding: 15px;
+    width: 18%;
+    border: none;
+}
+
+.chat {
+    display: inline-block;
+    width: auto;
+    color: white;
+    background-color: #894AA6;
+    border-radius: 20px;
+    margin: 1.5% auto;
+    padding: 20px;
+}
+
+.bot {
+    color: black;
+    background-color: #E8F7FE;
+}
+
+

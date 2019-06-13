@@ -1,0 +1,96 @@
+.home-header {
+    width: 100%;
+    background-color: #00ADEE;
+    padding: 35px;
+}
+
+.home-header h1 {
+    font-size: 75px;
+    text-align: center;
+    color: white;
+}
+
+.home-header input[type="text"] {
+    display: inline-block;
+    width: 90%;
+    font-size: 20px;
+    padding: 15px;
+    margin: 40px 0;
+    border: 0;
+}
+
+.btn-primary {
+    width: 9%;
+    margin-left: 0.4%;
+    background-color: #98C51A !important;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.home-container {
+    padding: 15px 15px 70px 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.options {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px;
+}
+
+.options i {
+    font-size: 55px;
+    color: #98C51A;
+}
+
+.options h2 {
+    font-size: 35px;
+}
+
+.options p {
+    font-size: 13px;
+    color: gray;
+}
+
+.question-container {
+    margin: 20px auto;
+}
+
+.question-container ul {
+    list-style: none;
+    padding: 0;
+    font-size: 17px;
+}
+
+.question-container h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.contactus {
+    padding: 15px;
+    border: 1px solid lightgray;
+    text-align: center;
+    font-style: italic;
+}
+
+.contactus h2 {
+    font-size: 55px;
+}
+
+.contactus h1 {
+    font-size: 100px;
+    font-family: 'Noto Sans', Arial, sans-serif;
+    color: #00AEEF;
+}
+
+.contactus p {
+    display: inline-block;
+    margin-top: 40px;
+    background-color: #98C51A;
+    padding: 25px 70px;
+    font-size: 40px;
+    color: white;
+}

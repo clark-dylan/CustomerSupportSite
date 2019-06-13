@@ -1,0 +1,21 @@
+{# Will extend the header and footer #}
+{% extends "core/base.html" %}
+
+{# Links our CSS #}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'oauth/index.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{# All HTML content should go here #}
+{% block content %}
+
+<form method="post">
+    {# Do not change/remove this. Security protection #}
+    {% csrf_token %}
+
+    {{ form }}
+    <input type="submit" placeholder="Submit">
+</form>
+
+{% endblock %}

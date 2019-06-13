@@ -1,0 +1,30 @@
+{# Will extend the header and footer #}
+{% extends "core/base.html" %}
+
+{# Title of our page #}
+{% block title %}Sign up | Verifone{% endblock %}
+
+{# Links our CSS #}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'oauth/index.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{# All HTML content should go here #}
+{% block content %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <form method="post" class="user_form">
+                <h1>Sign up</h1>
+                {# Do not change/remove this. Security protection #}
+                {% csrf_token %}
+
+                {{ form }}
+                <input type="submit" value="Create account">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+

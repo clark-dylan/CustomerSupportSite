@@ -1,0 +1,27 @@
+{# Will extend the header and footer #}
+{% extends "core/base.html" %}
+
+{# Title of our page #}
+{% block title %}Create Question | Verifone{% endblock %}
+
+{# Links our CSS #}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'forum/index.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{# All HTML content should go here #}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <form method="post" class="user_form">
+                <h1>Create a Question</h1>
+                {# Do not change/remove this. Security protection #}
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form }}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

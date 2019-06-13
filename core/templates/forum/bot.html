@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link href="{% static 'core/patterns.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'forum/bot.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="{% static 'core/cookie.js' %}"></script>
+
+</head>
+
+{# All HTML content should go here #}
+<body>
+<div class="jumbotron">
+    {% load staticfiles %}
+    <img id="bot_icon" src="{% static "forum/bot-icon.png" %}">
+
+    <div id="log" class="chat_log">
+        <div class="chat bot">Bot: Hello, how may I assist you today?</div>
+
+    </div>
+
+    <div class="input_log">
+        <input type="text" id="input_text" placeholder="Ask a Question">
+        <input type="submit" id="sub_button" value="Submit">
+    </div>
+</div>
+
+<script>
+
+    $("#sub_button").click(function () {
+
+        var input = $('#input_text');
+
+        if (input.val() !== "") {
+            var inputData = {
+                'text': input.val(),
+                "csrfmiddlewaretoken": "{% csrf_token %}"
+            };
+
+            $('.chat_log').append('<br><div class="chat">You: ' + input.val() + '</div>');
+            scrollDown();
+            input.val('');
+
+
+            $submit = $.ajax({
+                type: 'POST',
+                url: "http://127.0.0.1:8000/chatterbot/",
+                data: JSON.stringify(inputData),
+                contentType: 'application/json',
+                success: function (data) {
+                    appendBot(data["text"])
+                }
+            });
+
+            $submit.fail(function(){
+                appendError();
+            });
+
+
+            function scrollDown(){
+                var element = document.getElementById("log");
+                element.scrollTop = element.scrollHeight;
+            }
+
+            var appendBot = function(data){
+                $('.chat_log').append('<br><div class="chat bot">Bot: ' + data + '</div>');
+                scrollDown();
+            };
+
+            var appendError = function(){
+                $('.chat_log').append('<br><div class="chat bot">Bot: I\'m sorry, I didn\'t get that. I\'m still learning!</div>');
+                scrollDown();
+            };
+
+        }
+
+    });
+
+    $('#input_text').keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#sub_button").click();
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Noto+Sans" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="{% static 'core/autocomplete.js' %}?{% now 'U' %}"></script>
+    <script src="{% static 'core/cookie.js' %}"></script>
+
+    <link href="{% static 'core/patterns.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+    {% block styles %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="header_container">
+            <ul class="nav_menu">
+            <li class="nav_text"><a href="/">Support</a></li>
+                <li class="nav_text"><a href="{% url 'forum:index' %}">Forum</a></li>
+                <li class="nav_text"><a href="{% url "forum:bot-chat" %}" target="_blank"
+                                        onclick="window.open(this.href,'child','height=500,width=600'); return false;">AI Chat</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav_text"><a href="{% url 'oauth:profile' user.username %}">Profile</a></li>
+                    <li class="nav_text"><a href="{% url 'oauth:logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav_text"><a href="{% url 'oauth:login' %}">Login</a></li>
+                    <li class="nav_text"><a href="{% url 'oauth:signup' %}">Sign Up</a></li>
+                {% endif %}
+
+
+             <li class="header_logo"></li>
+                <li class="header_search">
+                    <form>
+                        <input type="text" placeholder="Search"><i class="material-icons">search</i>
+                    </form>
+                </li>
+
+            </ul>
+        </div>
+    </header>
+    {% block content %}
+
+{% endblock %}
+<footer class="footer_jumbotron">
+    <div class="footer_container">
+        {% load staticfiles %}
+        <img class="footer_logo" src="{% static "core/verifone-footer-logo.svg" %}">
+        <div class="footer_grid">
+            <div class="footer_grid_item">
+                <h2>Contact Us</h2>
+                <a href="#">Phone:1-800-555-1123</a>
+                <a href="#">Email</a>
+                <a href="{% url "forum:bot-chat" %}" target="_blank"
+                                        onclick="window.open(this.href,'child','height=500,width=600'); return false;">Robot Chat</a>
+            </div>
+             <div class="footer_grid_item">
+                <h2>Forum</h2>
+                <a href="{% url "forum:question-create" %}">Ask a Question</a>
+                <a href="{% url "forum:index" %}">Questions</a>
+                <a href="{% url "oauth:signup" %}">Sign up</a>
+                <a href="{% url "oauth:login" %}">Login</a>
+            </div>
+            <div class="footer_grid_item">
+                <h2>Services</h2>
+                <a href="https://www.verifone.com/en/us/verifone-connect">Verifone Connect</a>
+                <a href="https://www.verifone.com/en/us/payment-services">Payment Services</a>
+                <a href="http://support.verifone.com/">Device Services</a>
+                <a href="https://www.verifone.com/en/us/developer-central">Developer Central</a>
+            </div>
+            <div class="footer_grid_item">
+                <h2>Solutions</h2>
+                <a href="https://www.verifone.com/en/us/retail-solutions">Retail</a>
+                <a href="https://www.verifone.com/en/us/hospitality-solutions">Hospitality</a>
+                <a href="https://www.verifone.com/en/us/acquirer-solutions">Acquirers</a>
+                <a href="https://www.verifone.com/en/us/petroleum-and-convenience-retail">Petro</a>
+            </div>
+            <div class="footer_grid_item">
+                <h2>Company</h2>
+                <a href="https://www.verifone.com/en/about">About Us</a>
+                <a href="http://ir.verifone.com/">Investors</a>
+                <a href="https://www.verifone.com/en/us/partner-finder">Partners</a>
+                <a href="http://jobs.jobvite.com/verifone">Careers</a>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+</body>
+
+</html>
+
+<script>
+
+{% comment %}var query = {
+   "text": $("#hello").val(),
+    "csrf_token": "{% csrf_token %}"
+};
+
+$.ajax({
+    type: 'POST',
+    url: "http://127.0.0.1:8000/chatterbot/",
+    data: JSON.stringify(query),
+    contentType: 'application/json',
+    success: function (data) {
+        console.log(data);
+    }
+});{% endcomment %}
+
+</script>

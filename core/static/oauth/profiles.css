@@ -1,0 +1,22 @@
+.jumbotron {
+    background-color: #F5F5F5;
+    padding-bottom: 70px;
+}
+
+.container {
+    margin: 20px auto;
+}
+
+.edit{
+    font-size: 14px;
+    color: white;
+    font-weight: normal;
+    padding: 5px;
+    background-color: #00AEEF;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.delete{
+    background-color: #EA4335;
+}

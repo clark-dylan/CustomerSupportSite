@@ -1,0 +1,91 @@
+{# Will extend the header and footer #}
+{% extends "core/base.html" %}
+
+{# Title of our page #}
+{% block title %}Forum | Verifone{% endblock %}
+
+{# Links our CSS #}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'forum/index.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{# All HTML content should go here #}
+{% block content %}
+    <div class="jumbotron">
+        <div class="nameHeader">
+            <h1>Community Forum</h1>
+        </div>
+        <div class="mainSearch">
+            <input type="text" placeholder="Enter a Search">
+        </div>
+        <div class="container">
+            <div class="pagination-container">
+                <a href="{% url "forum:question-create" %}">
+                    <div class="btn-primary start-topic-btn">Start a topic</div>
+                </a>
+
+                {% if is_paginated %}
+                    <div class="pagination">
+
+                        {% if page_obj.has_previous %}
+                            <a href="{% url "forum:index" %}?page={{ page_obj.previous_page_number }}">&laquo;
+                                Previous</a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <a href="" class="active">{{ num }}</a>
+
+                            {% else %}
+                                <a href="{% url "forum:index" %}?page={{ num }}">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a href="{% url "forum:index" %}?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="question-container">
+                {% for question in latest_questions_list %}
+
+                    <div class="question">
+                        <div class="question-details-container">
+                            <p><a href="{% url "forum:question" question.id %}">{{ question.title }}</a></p>
+                            <p class="question-author">By: <a
+                                    href="{% url "oauth:profile" question.user %}">{{ question.user }}</a> Date
+                                published: {{ question.date_published }}</p>
+                        </div>
+                        <div class="num-replies">
+                            {{ question.num_replies }} replies
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="pagination-container">
+                {% if is_paginated %}
+                    <div class="pagination">
+
+                        {% if page_obj.has_previous %}
+                            <a href="{% url "forum:index" %}?page={{ page_obj.previous_page_number }}">&laquo;
+                                Previous</a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <a href="" class="active">{{ num }}</a>
+
+                            {% else %}
+                                <a href="{% url "forum:index" %}?page={{ num }}">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a href="{% url "forum:index" %}?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

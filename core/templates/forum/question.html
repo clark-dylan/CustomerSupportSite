@@ -1,0 +1,71 @@
+{# Will extend the header and footer #}
+{% extends "core/base.html" %}
+
+{# Title of our page #}
+{% block title %}Question | Verifone{% endblock %}
+
+{# Links our CSS #}
+{% block styles %}
+    {% load staticfiles %}
+    <link href="{% static 'forum/index.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{# All HTML content should go here #}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+
+            <ul class="breadcrumb">
+                <li><a href="{% url 'forum:index' %}">Community Forum</a></li>
+                <li>{{ questions.title }}</li>
+            </ul>
+
+            <div class="question-container">
+
+                <div class="question">
+
+                        <h2>{{ question.title }}</h2>
+
+                        <p>{{ question.description|safe }}</p>
+
+                        <p class="question-author">Question By: <a
+                                href="{% url 'oauth:profile' question.user %}">{{ question.user }}</a>
+                            <br> Date published: {{ question.date_published }}</p>
+                    </div>
+
+                <div class="num-answers">
+                    {{ question.num_replies }} Replies
+                </div>
+                {% for answer in question.answers_set.all %}
+                    <div class="question">
+                        <p class="author-says"><a href="{% url 'oauth:profile' answer.user %}">{{ answer.user }}</a> says...</p>
+                        <p>{{ answer.reply|safe }}</p>
+                        <p class="answer-author">{{ answer.date_published }}</p>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+            {#            <div class="pagination-container">#}
+            {#                <div class="pagination">#}
+            {#                    <a href="#">&laquo; Previous</a>#}
+            {#                    <a href="#" class="active">1</a>#}
+            {#                    <a href="#">2</a>#}
+            {#                    <a href="#">3</a>#}
+            {#                    <a href="#">4</a>#}
+            {#                    <a href="#">5</a>#}
+            {#                    <a href="#">6</a>#}
+            {#                    <a href="#">Next &raquo;</a>#}
+            {#                </div>#}
+            {#            </div>#}
+
+        <form action="" method="post">
+    {% csrf_token %}
+           {{ form.media }}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+
+        </div>
+    </div>
+{% endblock %}
